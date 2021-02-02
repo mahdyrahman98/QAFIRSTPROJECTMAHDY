@@ -44,8 +44,6 @@ public abstract class ItemController implements CrudController<Item> {
 		String itemName = utils.getString();
 		LOGGER.info("Please enter the item price");
 		double price = utils.getDouble();
-		LOGGER.info( "Please enter the brand of your item");
-		String brand = utils.getString();
 		LOGGER.info("Item created");
 			// TODO Auto-generated method stub
 		return item;
@@ -57,11 +55,9 @@ public abstract class ItemController implements CrudController<Item> {
 		Long id = utils.getLong();
 		LOGGER.info("Please enter the item name");
 		String itemName = utils.getString();
-		LOGGER.info("Please enter the brand of the item you would like to update");
-		String brand = utils.getString();
 		LOGGER.info("Please enter a new price");
 		Double price = utils.getDouble();
-		Item item = (Item) itemDAO.update(new Item(id, itemName, brand, price));
+		Item item = (Item) itemDAO.update(new Item(id, itemName, price));
 		LOGGER.info("item updated");
 		return item;
 		
