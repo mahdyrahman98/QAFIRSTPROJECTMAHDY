@@ -3,11 +3,11 @@ package com.qa.ims.persistence.domain;
 public class Item {
 	
 	
-	private int itemid;
+	private Long itemid;
 	private String itemName;
 	private String brand;
 	private double price;
-	public Item(int itemid, String itemName, String brand, double price) {
+	public Item(long itemid, String itemName, String brand, double price) {
 		super();
 		this.itemid = itemid;
 		this.itemName = itemName;
@@ -18,10 +18,10 @@ public class Item {
 	public String toString() {
 		return "Item [itemid=" + itemid + ", itemName=" + itemName + ", brand=" + brand + ", price=" + price + "]";
 	}
-	public int getItemid() {
+	public Long getItemid() {
 		return itemid;
 	}
-	public void setItemid(int itemid) {
+	public void setItemid(Long itemid) {
 		this.itemid = itemid;
 	}
 	public String getItemName() {
@@ -45,14 +45,14 @@ public class Item {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		long result = 1;
 		result = prime * result + ((brand == null) ? 0 : brand.hashCode());
 		result = prime * result + ((itemName == null) ? 0 : itemName.hashCode());
 		result = prime * result + itemid;
 		long temp;
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
+		return (int) result;
 	}
 	@Override
 	public boolean equals(Object obj) {

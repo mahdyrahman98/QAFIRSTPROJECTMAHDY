@@ -11,6 +11,8 @@ public class Utils {
 
 	private final Scanner scanner;
 
+	
+
 	public Utils(Scanner scanner) {
 		super();
 		this.scanner = scanner;
