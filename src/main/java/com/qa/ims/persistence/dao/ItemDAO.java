@@ -37,11 +37,11 @@ public class ItemDAO implements Dao<Item> {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT * FROM items");) {
-			List<Item> customers = new ArrayList<>();
+			List<Item> item = new ArrayList<>();
 			while (resultSet.next()) {
-				Item.add(modelFromResultSet(resultSet));
+				item.add(modelFromResultSet(resultSet));
 			}
-			return customers;
+			return item;
 		} catch (SQLException e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
@@ -63,9 +63,7 @@ public class ItemDAO implements Dao<Item> {
 	}
 
 	/**
-	 * Creates a customer in the database
-	 * 
-	 * @param customer - takes in a customer object. id will be ignored
+	 
 	 */
 	@Override
 	public Item create(Item item) {
