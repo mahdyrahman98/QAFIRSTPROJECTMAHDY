@@ -7,7 +7,8 @@ import org.apache.logging.log4j.Logger;
 
 import com.qa.ims.persistence.dao.OrderDAO;
 import com.qa.ims.persistence.domain.Order;
-import com.qa.ims.persistence.domain.Order;
+import com.qa.ims.persistence.dao.OrderitemDAO;
+import com.qa.ims.persistence.domain.Orderitem;
 import com.qa.ims.utils.Utils;
 
 public class OrderController implements CrudController<Order> {

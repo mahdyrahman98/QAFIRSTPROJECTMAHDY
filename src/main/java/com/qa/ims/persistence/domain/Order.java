@@ -6,7 +6,7 @@ public class Order {
 	private Long customerid;
 	private Double ordervalue;
 	private String orderdate;
-	public Order(Long orderid, Long customerid, Double ordervalue, String orderdate) {
+	public Order(Long orderid, Long customerid,  String orderdate, Double ordervalue) {
 		super();
 		this.orderid = orderid;
 		this.customerid = customerid;

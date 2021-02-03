@@ -1,9 +1,3 @@
-
-
-
-
-
-
 DROP TABLE IF EXISTS `customers`;
 
 CREATE TABLE IF NOT EXISTS `customers` (
@@ -30,4 +24,13 @@ PRIMARY KEY (order_id),
 FOREIGN KEY (customer_id) REFERENCES customers(id)
 );
 
+CREATE TABLE IF NOT EXISTS orderitems (
+order_item_id INT NOT NULL,
+order_id INT NOT NULL,
+item_id INT NOT NULL,
+item_quantity INT NOT NULL,
+PRIMARY KEY (order_item_id),
+FOREIGN KEY (order_id) REFERENCES orders(order_id),
+FOREIGN KEY (item_id) REFERENCES item(item_id)
+);
 

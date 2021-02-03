@@ -23,7 +23,7 @@ public class OrderDAO implements Dao<Order> {
 		Long customerid = resultSet.getLong("customerid");
 		Double ordervalue = resultSet.getDouble("ordervalue");
 		String orderdate = resultSet.getString("order date");
-		return new Order(orderid, customerid, ordervalue, orderdate);
+		return new Order(orderid, customerid, orderdate, ordervalue);
 	}
 
 	/**
