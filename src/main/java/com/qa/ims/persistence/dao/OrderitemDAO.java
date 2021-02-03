@@ -22,11 +22,11 @@ public class OrderitemDAO implements Dao<Orderitem>{
 	
 	@Override
 	public Orderitem modelFromResultSet(ResultSet resultSet) throws SQLException {
-		Long orderitemid = resultSet.getLong("orderitemid");
-		Long orderid = resultSet.getLong("orderid");
-		Long itemid = resultSet.getLong("itemid");
-		Long orderquantity = resultSet.getLong("orderquantity");
-		return new Orderitem(orderitemid, orderid, itemid, orderquantity);
+		Long orderitemid = resultSet.getLong("order_item_id");
+		Long orderid = resultSet.getLong("order_id");
+		Long itemid = resultSet.getLong("item_id");
+		Long itemquantity = resultSet.getLong("item_quantity");
+		return new Orderitem(orderitemid, orderid, itemid, itemquantity);
 	}
 
 	/**
@@ -73,11 +73,11 @@ public class OrderitemDAO implements Dao<Orderitem>{
 	public Orderitem create(Orderitem orderitem) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
-						.prepareStatement("INSERT INTO orderitems(first_name, surname) VALUES (?, ?)");) {
+						.prepareStatement("INSERT INTO orderitems(order_id, item_id, item_quantity) VALUES (?, ?, ?)");) {
 			statement.setLong(1, orderitem.getOrderitemid());
 			statement.setLong(2, orderitem.getOrderid());
 			statement.setLong(3, orderitem.getItemid());
-			statement.setLong(4, orderitem.getOrderquantity());
+			statement.setLong(4, orderitem.getItemquantity());
 			statement.executeUpdate();
 			return readLatest();
 		} catch (Exception e) {
@@ -90,7 +90,7 @@ public class OrderitemDAO implements Dao<Orderitem>{
 	@Override
 	public Orderitem read(Long id) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
-				PreparedStatement statement = connection.prepareStatement("SELECT * FROM orderitems WHERE id = ?");) {
+				PreparedStatement statement = connection.prepareStatement("SELECT * FROM order_items WHERE id = ?");) {
 			statement.setLong(1, id);
 			try (ResultSet resultSet = statement.executeQuery();) {
 				resultSet.next();
@@ -118,7 +118,7 @@ public class OrderitemDAO implements Dao<Orderitem>{
 			statement.setLong(1, orderitem.getOrderitemid());
 			statement.setLong(2, orderitem.getOrderid());
 			statement.setLong(3, orderitem.getItemid());
-			statement.setLong(4, orderitem.getOrderquantity());
+			statement.setLong(4, orderitem.getItemquantity());
 			statement.executeUpdate();
 			return read(orderitem.getOrderitemid());
 		} catch (Exception e) {

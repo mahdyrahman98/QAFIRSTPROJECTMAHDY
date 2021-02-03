@@ -5,13 +5,13 @@ public class Orderitem {
 	private Long orderitemid;
 	private Long orderid;
 	private Long itemid;
-	private Long orderquantity;
-	public Orderitem(Long orderitemid, Long orderid, Long itemid, Long orderquantity) {
+	private Long itemquantity;
+	public Orderitem(Long orderitemid, Long orderid, Long itemid, Long itemquantity) {
 		super();
 		this.orderitemid = orderitemid;
 		this.orderid = orderid;
 		this.itemid = itemid;
-		this.orderquantity = orderquantity;
+		this.itemquantity = itemquantity;
 	}
 	public Long getOrderitemid() {
 		return orderitemid;
@@ -31,16 +31,16 @@ public class Orderitem {
 	public void setItemid(Long itemid) {
 		this.itemid = itemid;
 	}
-	public Long getOrderquantity() {
-		return orderquantity;
+	public Long getItemquantity() {
+		return itemquantity;
 	}
-	public void setOrderquantity(Long orderquantity) {
-		this.orderquantity = orderquantity;
+	public void setItemquantity(Long itemquantity) {
+		this.itemquantity = itemquantity;
 	}
 	@Override
 	public String toString() {
 		return "Orderitem [orderitemid=" + orderitemid + ", orderid=" + orderid + ", itemid=" + itemid
-				+ ", orderquantity=" + orderquantity + "]";
+				+ ", orderquantity=" + itemquantity + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -49,7 +49,7 @@ public class Orderitem {
 		result = prime * result + ((itemid == null) ? 0 : itemid.hashCode());
 		result = prime * result + ((orderid == null) ? 0 : orderid.hashCode());
 		result = prime * result + ((orderitemid == null) ? 0 : orderitemid.hashCode());
-		result = prime * result + ((orderquantity == null) ? 0 : orderquantity.hashCode());
+		result = prime * result + ((itemquantity == null) ? 0 : itemquantity.hashCode());
 		return result;
 	}
 	@Override
@@ -76,10 +76,10 @@ public class Orderitem {
 				return false;
 		} else if (!orderitemid.equals(other.orderitemid))
 			return false;
-		if (orderquantity == null) {
-			if (other.orderquantity != null)
+		if (itemquantity == null) {
+			if (other.itemquantity != null)
 				return false;
-		} else if (!orderquantity.equals(other.orderquantity))
+		} else if (!itemquantity.equals(other.itemquantity))
 			return false;
 		return true;
 	}

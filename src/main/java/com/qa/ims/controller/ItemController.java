@@ -9,18 +9,18 @@ import com.qa.ims.persistence.dao.ItemDAO;
 import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.utils.Utils;
 
-public abstract class ItemController implements CrudController<Item> {
+public class ItemController implements CrudController<Item> {
 	
 
 	public static final Logger LOGGER = LogManager.getLogger();
 	
 	
-	@SuppressWarnings({ "unused", "rawtypes" })
+	
 	private ItemDAO itemDAO;
 	private Utils utils;
 	
 	
-	@SuppressWarnings("rawtypes")
+	
 	public ItemController(ItemDAO itemDAO, Utils utils) {
 		super();
 		this.itemDAO = itemDAO;
@@ -39,13 +39,15 @@ public abstract class ItemController implements CrudController<Item> {
 		return item;
 	}
 
-	public Item create(Item item) {
+	public Item create() {
 		LOGGER.info("Please enter the item name that you want");
 		String itemName = utils.getString();
 		LOGGER.info("Please enter the item price");
 		double price = utils.getDouble();
+		Item item = itemDAO.create(new Item (itemName, price));
 		LOGGER.info("Item created");
-			// TODO Auto-generated method stub
+		
+	
 		return item;
 	}
 
@@ -71,6 +73,7 @@ public abstract class ItemController implements CrudController<Item> {
 		Long id = utils.getLong();
 		return itemDAO.delete(id);
 	}
+
 
 
 

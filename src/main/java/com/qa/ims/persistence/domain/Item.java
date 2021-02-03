@@ -13,6 +13,11 @@ public class Item {
 		this.itemName = itemName;
 		this.price = price;
 	}
+	public Item(String itemName, double price) {
+		this.itemName = itemName;
+		this.price = price;
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
 		return "Item [itemid=" + itemid + ", itemName=" + itemName + ", price=" + price + "]";
