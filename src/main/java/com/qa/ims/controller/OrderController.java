@@ -8,9 +8,11 @@ import org.apache.logging.log4j.Logger;
 import com.qa.ims.persistence.dao.CustomerDAO;
 import com.qa.ims.persistence.dao.ItemDAO;
 import com.qa.ims.persistence.dao.OrderDAO;
+import com.qa.ims.persistence.domain.Customer;
 import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.persistence.dao.OrderitemDAO;
 import com.qa.ims.persistence.domain.Orderitem;
+import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.utils.Utils;
 
 public class OrderController implements CrudController<Order> {
@@ -23,11 +25,13 @@ public class OrderController implements CrudController<Order> {
 	private ItemDAO itemDAO;
 	private Utils utils;
 	
-
-	public OrderController(OrderDAO orderDAO, OrderitemDAO orderitemDAO, Utils utils) {
+	public OrderController(OrderDAO orderDAO, OrderitemDAO orderitemDAO, CustomerDAO customerDAO, ItemDAO itemDAO, Utils utils) {
 		super();
 		this.orderDAO = orderDAO;
 		this.orderitemDAO = orderitemDAO;
+		this.customerDAO = customerDAO;
+		this.itemDAO = itemDAO;
+		
 		this.utils = utils;
 	}
 
@@ -48,8 +52,24 @@ public class OrderController implements CrudController<Order> {
 	 */
 	@Override
 	public Order create() {
+		
+		Customer customer = get.
+		
+		do {
 		LOGGER.info("Please enter a customer id");
 		Long customerid = utils.getLong();
+		LOGGER.info ("Please enter item id");
+		Long itemid = utils.getLong();
+		LOGGER.info("Please enter item value");
+		Double price = utils.getDouble();
+		LOGGER.info("Please enter quantity of item");
+		Long itemquantity = utils.getLong();
+		LOGGER.info("Do you want to add another item - Y/N");
+		
+		
+		
+		if 
+		
 		LOGGER.info("Please enter order value");
 		Double ordervalue = utils.getDouble();
 		LOGGER.info("Please enter order date");
@@ -57,7 +77,12 @@ public class OrderController implements CrudController<Order> {
 		Order order = orderDAO.create(new Order(customerid, ordervalue, orderdate));
 		LOGGER.info("Order created");
 		return order;
+		} while
 	}
+	
+		
+		
+	
 
 	/**
 	 * Updates an existing order by taking in user input
