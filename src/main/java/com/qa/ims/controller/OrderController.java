@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.qa.ims.persistence.dao.CustomerDAO;
+import com.qa.ims.persistence.dao.ItemDAO;
 import com.qa.ims.persistence.dao.OrderDAO;
 import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.persistence.dao.OrderitemDAO;
@@ -16,11 +18,16 @@ public class OrderController implements CrudController<Order> {
 	public static final Logger LOGGER = LogManager.getLogger();
 
 	private OrderDAO orderDAO;
+	private OrderitemDAO orderitemDAO;
+	private CustomerDAO customerDAO;
+	private ItemDAO itemDAO;
 	private Utils utils;
+	
 
-	public OrderController(OrderDAO orderDAO, Utils utils) {
+	public OrderController(OrderDAO orderDAO, OrderitemDAO orderitemDAO, Utils utils) {
 		super();
 		this.orderDAO = orderDAO;
+		this.orderitemDAO = orderitemDAO;
 		this.utils = utils;
 	}
 
@@ -43,11 +50,11 @@ public class OrderController implements CrudController<Order> {
 	public Order create() {
 		LOGGER.info("Please enter a customer id");
 		Long customerid = utils.getLong();
+		LOGGER.info("Please enter order value");
+		Double ordervalue = utils.getDouble();
 		LOGGER.info("Please enter order date");
 		String orderdate = utils.getString();
-		LOGGER.info("Please enter the value of the order");
-		Double ordervalue = utils.getDouble();
-		Order order = orderDAO.create(new Order(customerid, orderdate, ordervalue));
+		Order order = orderDAO.create(new Order(customerid, ordervalue, orderdate));
 		LOGGER.info("Order created");
 		return order;
 	}
@@ -59,11 +66,11 @@ public class OrderController implements CrudController<Order> {
 	public Order update() {
 		LOGGER.info("Please enter the customerid of the order you would like to update");
 		Long customerid = utils.getLong();
-		LOGGER.info("Please enter a new order date");
-		String orderdate = utils.getString();
-		LOGGER.info("Please enter an order value");
+		LOGGER.info("Please enter a new order value");
 		Double ordervalue = utils.getDouble();
-		Order order = orderDAO.update(new Order(customerid, orderdate, ordervalue));
+		LOGGER.info("Please enter an order date");
+		String orderdate = utils.getString();
+		Order order = orderDAO.update(new Order(customerid, ordervalue, orderdate));
 		LOGGER.info("Order Updated");
 		return order;
 	}

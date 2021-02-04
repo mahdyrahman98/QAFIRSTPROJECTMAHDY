@@ -6,22 +6,23 @@ public class Order {
 	private Long customerid;
 	private Double ordervalue;
 	private String orderdate;
-	public Order(Long orderid, Long customerid,  String orderdate, Double ordervalue) {
+	public Order(Long orderid, Long customerid,  Double ordervalue, String orderdate) {
 		super();
 		this.orderid = orderid;
 		this.customerid = customerid;
 		this.ordervalue = ordervalue;
 		this.orderdate = orderdate;
 	}
-	public Order(Long customerid, String orderdate, Double ordervalue)
+	public Order(Long customerid, Double ordervalue, String orderdate) {
 	
-	{
+	
 		this.customerid = customerid;
-		this.orderdate = orderdate;
 		this.ordervalue = ordervalue;
+		this.orderdate = orderdate;
 		
 		// TODO Auto-generated constructor stub
 	}
+	
 	public Long getOrderid() {
 		return orderid;
 	}

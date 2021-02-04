@@ -7,13 +7,13 @@ public class Item {
 	private String itemName;
 	
 	private double price;
-	public Item(long itemid, String itemName, double price) {
+	public Item(Long itemid, String itemName, Double price) {
 		super();
 		this.itemid = itemid;
 		this.itemName = itemName;
 		this.price = price;
 	}
-	public Item(String itemName, double price) {
+	public Item(String itemName, Double price) {
 		this.itemName = itemName;
 		this.price = price;
 		// TODO Auto-generated constructor stub
