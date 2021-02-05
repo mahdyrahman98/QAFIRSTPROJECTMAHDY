@@ -24,6 +24,7 @@ public class OrderController implements CrudController<Order> {
 	private CustomerDAO customerDAO;
 	private ItemDAO itemDAO;
 	private Utils utils;
+	OrderitemController orderitemcontroller = new OrderitemController (orderitemDAO, utils);
 	
 	public OrderController(OrderDAO orderDAO, OrderitemDAO orderitemDAO, CustomerDAO customerDAO, ItemDAO itemDAO, Utils utils) {
 		super();
@@ -53,31 +54,24 @@ public class OrderController implements CrudController<Order> {
 	@Override
 	public Order create() {
 		
-		Customer customer = get.
-		
-		do {
-		LOGGER.info("Please enter a customer id");
+		boolean additem = true;
+		LOGGER.info("Please enter customerID");
 		Long customerid = utils.getLong();
-		LOGGER.info ("Please enter item id");
-		Long itemid = utils.getLong();
-		LOGGER.info("Please enter item value");
-		Double price = utils.getDouble();
-		LOGGER.info("Please enter quantity of item");
-		Long itemquantity = utils.getLong();
-		LOGGER.info("Do you want to add another item - Y/N");
-		
-		
-		
-		if 
-		
-		LOGGER.info("Please enter order value");
-		Double ordervalue = utils.getDouble();
-		LOGGER.info("Please enter order date");
+		LOGGER.info("Please enter the date");
 		String orderdate = utils.getString();
-		Order order = orderDAO.create(new Order(customerid, ordervalue, orderdate));
-		LOGGER.info("Order created");
+		Order order = orderDAO.create(new Order (customerid, orderdate));
+		while (additem) {
+			LOGGER.info("Do you want to add an item?: y/n");
+			String choice = utils.getString();
+			if(choice.toLowerCase().equals("y")) {
+				orderitemcontroller.create(order.getOrderid());
+			}else {
+				additem = false;
+			}
+		}
+		LOGGER.info("Order generated");
 		return order;
-		} while
+		
 	}
 	
 		
@@ -95,7 +89,7 @@ public class OrderController implements CrudController<Order> {
 		Double ordervalue = utils.getDouble();
 		LOGGER.info("Please enter an order date");
 		String orderdate = utils.getString();
-		Order order = orderDAO.update(new Order(customerid, ordervalue, orderdate));
+		Order order = orderDAO.update(new Order(customerid, orderdate));
 		LOGGER.info("Order Updated");
 		return order;
 	}
